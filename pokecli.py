@@ -28,11 +28,11 @@ import os
 import re
 import json
 import struct
+import pprint
 import logging
 import requests
 import argparse
-
-from pgoapi import PGoApi
+from pgoapi.pgoapi import PGoApi
 from pgoapi.utilities import f2i, h2f
 
 from google.protobuf.internal import encoder
@@ -101,7 +101,6 @@ def init_config():
       return None
     
     return config
-    
 
 def main():
     # log settings
@@ -169,7 +168,7 @@ def main():
     
     # execute the RPC call
     response_dict = api.call()
-    print('Response dictionary: \n\r{}'.format(json.dumps(response_dict, indent=2)))
+    print('Response dictionary: \n\r{}'.format(pprint.PrettyPrinter(indent=4).pformat(response_dict)))
     
     # alternative:
     # api.get_player().get_inventory().get_map_objects().download_settings(hash="4a2e9bc330dae60e7b74fc85b98868ab4700802e").call()

@@ -1,6 +1,8 @@
 geopy==1.11.0
-protobuf==2.6.1
+protobuf==2.6.1; python_version < '3.0'
+protobuf==3.0.0b3; python_version >= '3.0'
 requests==2.10.0
 s2sphere==0.2.4
 gpsoauth==0.3.0
-protobuf-to-dict==0.1.0
+protobuf-to-dict==0.1.0; python_version < '3.0'
+git+https://github.com/b1tninja/protobuf-to-dict.git; python_version >= '3.0'

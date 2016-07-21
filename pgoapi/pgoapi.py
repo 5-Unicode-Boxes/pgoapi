@@ -27,14 +27,15 @@ import logging
 import re
 import requests
 
-from utilities import f2i, h2f
+from .utilities import f2i, h2f
 
-from rpc_api import RpcApi
-from auth_ptc import AuthPtc
-from auth_google import AuthGoogle
-from exceptions import AuthException, NotLoggedInException, ServerBusyOrOfflineException
+from .rpc_api import RpcApi
+from .exceptions import AuthException, NotLoggedInException, ServerBusyOrOfflineException
+from .auth_ptc import AuthPtc
+from .auth_google import AuthGoogle
+from six import string_types
 
-import protos.RpcEnum_pb2 as RpcEnum
+from .protos import RpcEnum_pb2 as RpcEnum
 
 logger = logging.getLogger(__name__)
 
@@ -129,7 +130,7 @@ class PGoApi:
         
     def login(self, provider, username, password):
     
-        if not isinstance(username, basestring) or not isinstance(password, basestring):
+        if not isinstance(username, string_types) or not isinstance(password, string_types):
             raise AuthException("Username/password not correctly specified")
         
         if provider == 'ptc':

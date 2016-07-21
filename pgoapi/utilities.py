@@ -44,7 +44,7 @@ def to_camel_case(value):
       yield str.capitalize
 
   c = camelcase()
-  return "".join(c.next()(x) if x else '_' for x in value.split("_"))
+  return "".join(next(c)(x) if x else '_' for x in value.split("_"))
 
       
 def get_class(cls):
